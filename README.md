@@ -1,9 +1,6 @@
 # Markov Chain Kelompok 13 RA
-
-Rantai Markov meliputi:
-1. Identifikasi Ruang Keadaan 
-2. Matriks Transisi
-3. Diagram Transisi
-4. Probabilitas Langkah ke-n 
-5. Distribusi Stasioner 
-6. Klasifikasi Ruang keadaan (Ruang State) Dan lain-lain 
+| From    | State 3 | State 4 | State 5 |
+|---------|--------:|--------:|--------:|
+| State 3 |   0.000 |    0.50 |   0.500 |
+| State 4 |   0.200 |    0.30 |   0.500 |
+| State 5 |   0.125 |    0.75 |   0.125 |
