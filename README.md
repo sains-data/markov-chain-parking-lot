@@ -1,41 +1,41 @@
-# Markov Chain Parking Lot Occupancy Analysis
+# Analisis Okupansi Tempat Parkir dengan Rantai Markov
 
-## 📋 Project Overview
+## 📋 Gambaran Proyek
 
-This project implements a **Markov Chain model** to analyze and predict parking lot occupancy patterns. By analyzing historical parking data, we can determine transition probabilities between different occupancy states and predict future parking availability.
+Proyek ini mengimplementasikan **model Rantai Markov** untuk menganalisis dan memprediksi pola okupansi tempat parkir. Dengan menganalisis data historis parkir, kita dapat menentukan probabilitas transisi antar berbagai state okupansi dan memprediksi ketersediaan parkir di masa depan.
 
-**Group:** Kelompok 13 RA  
-**Date:** November 2025
-
----
-
-## 🎯 Objective
-
-To model parking lot occupancy using Markov Chain theory, enabling:
-- Analysis of parking usage patterns
-- Prediction of future occupancy states
-- Understanding of transition dynamics between different occupancy levels
+**Kelompok:** Kelompok 13 RA  
+**Tanggal:** November 2025
 
 ---
 
-## 📊 State Definition
+## 🎯 Tujuan
 
-The parking lot occupancy is divided into 6 discrete states based on the number of occupied spaces:
-
-| State | Occupancy Range | Description |
-|-------|-----------------|-------------|
-| State 1 | 0 - 10 spaces   | Very Low |
-| State 2 | 11 - 20 spaces  | Low |
-| State 3 | 21 - 30 spaces  | Medium-Low |
-| State 4 | 31 - 40 spaces  | Medium-High |
-| State 5 | 41 - 50 spaces  | High |
-| State 6 | 51 - 60 spaces  | Very High |
+Memodelkan okupansi tempat parkir menggunakan teori Rantai Markov untuk:
+- Menganalisis pola penggunaan parkir
+- Memprediksi kondisi okupansi di masa depan
+- Memahami dinamika transisi antar tingkat okupansi yang berbeda
 
 ---
 
-## 🔄 Transition Matrix (P)
+## 📊 Definisi State
 
-Based on the analyzed dataset, the transition probability matrix between states is:
+Okupansi tempat parkir dibagi menjadi 6 state diskrit berdasarkan jumlah tempat yang terisi:
+
+| State | Rentang Okupansi | Deskripsi |
+|-------|------------------|-----------|
+| State 1 | 0 - 10 tempat   | Sangat Rendah |
+| State 2 | 11 - 20 tempat  | Rendah |
+| State 3 | 21 - 30 tempat  | Sedang-Rendah |
+| State 4 | 31 - 40 tempat  | Sedang-Tinggi |
+| State 5 | 41 - 50 tempat  | Tinggi |
+| State 6 | 51 - 60 tempat  | Sangat Tinggi |
+
+---
+
+## 🔄 Matriks Transisi (P)
+
+Berdasarkan analisis dataset, matriks probabilitas transisi antar state adalah:
 
 | From    | State 3 | State 4 | State 5 |
 |---------|--------:|--------:|--------:|
@@ -43,97 +43,97 @@ Based on the analyzed dataset, the transition probability matrix between states 
 | State 4 |   0.200 |    0.30 |   0.500 |
 | State 5 |   0.125 |    0.75 |   0.125 |
 
-**Interpretation:**
-- From **State 3** (21-30 spaces): 50% probability to transition to State 4, 50% to State 5
-- From **State 4** (31-40 spaces): 20% to State 3, 30% stays in State 4, 50% to State 5
-- From **State 5** (41-50 spaces): 12.5% to State 3, 75% to State 4, 12.5% stays in State 5
+**Interpretasi:**
+- Dari **State 3** (21-30 tempat): probabilitas 50% untuk transisi ke State 4, 50% ke State 5
+- Dari **State 4** (31-40 tempat): probabilitas 20% ke State 3, 30% tetap di State 4, 50% ke State 5
+- Dari **State 5** (41-50 tempat): probabilitas 12.5% ke State 3, 75% ke State 4, 12.5% tetap di State 5
 
 ---
 
-## 📈 State Transition Diagram
+## 📈 Diagram Transisi State
 
-The following diagram visualizes the transitions between states:
+Diagram berikut memvisualisasikan transisi antar state:
 
-<img src="./graf.png" alt="State Transition Diagram" width="600"/>
-
----
-
-## 🛠️ Implementation
-
-The analysis is implemented in R using:
-- **Data processing:** `dplyr`, `tidyr`
-- **Visualization:** `ggraph`, `igraph`, `tidyverse`
-- **Analysis:** Custom Markov Chain calculations including P² (2-step transitions)
-
-### Key Features:
-1. **Data Import & Preprocessing:** Load and clean parking occupancy data
-2. **State Classification:** Automatically categorize occupancy into discrete states
-3. **Transition Matrix Calculation:** Compute probability of transitions between states
-4. **Multi-step Predictions:** Calculate P² for 2-step transition probabilities
-5. **Visualization:** Generate state transition diagrams
+<img src="./graf.png" alt="Diagram Transisi State" width="600"/>
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Implementasi
+
+Analisis diimplementasikan dalam R menggunakan:
+- **Pemrosesan data:** `dplyr`, `tidyr`
+- **Visualisasi:** `ggraph`, `igraph`, `tidyverse`
+- **Analisis:** Kalkulasi Rantai Markov kustom termasuk P² (transisi 2 langkah)
+
+### Fitur Utama:
+1. **Import & Preprocessing Data:** Memuat dan membersihkan data okupansi parkir
+2. **Klasifikasi State:** Mengkategorikan okupansi ke dalam state diskrit secara otomatis
+3. **Kalkulasi Matriks Transisi:** Menghitung probabilitas transisi antar state
+4. **Prediksi Multi-langkah:** Menghitung P² untuk probabilitas transisi 2 langkah
+5. **Visualisasi:** Menghasilkan diagram transisi state
+
+---
+
+## 📂 Struktur Proyek
 
 ```
 markov-chain-parking-lot/
 │
-├── code_R.Rmd              # Main R Markdown analysis file
-├── dataset_13_RA.xlsx      # Input dataset
-├── graf.png                # State transition diagram
-├── README.md               # Project documentation
-└── outdate/                # Archive folder
-    ├── dataset/            # Previous datasets
-    ├── markov.ipynb        # Jupyter notebook version
-    └── referensi/          # Reference papers
+├── code_R.Rmd              # File analisis R Markdown utama
+├── dataset_13_RA.xlsx      # Dataset input
+├── graf.png                # Diagram transisi state
+├── README.md               # Dokumentasi proyek
+└── outdate/                # Folder arsip
+    ├── dataset/            # Dataset sebelumnya
+    ├── markov.ipynb        # Versi Jupyter notebook
+    └── referensi/          # Paper referensi
 ```
 
 ---
 
-## 🚀 Usage
+## 🚀 Cara Penggunaan
 
-1. Open `code_R.Rmd` in RStudio
-2. Install required packages (first code chunk)
-3. Load your parking dataset
-4. Run all chunks to generate:
-   - Transition probability matrix (P)
-   - 2-step transition matrix (P²)
-   - State transition diagram
+1. Buka `code_R.Rmd` di RStudio
+2. Install package yang diperlukan (chunk kode pertama)
+3. Muat dataset parkir Anda
+4. Jalankan semua chunk untuk menghasilkan:
+   - Matriks probabilitas transisi (P)
+   - Matriks transisi 2 langkah (P²)
+   - Diagram transisi state
 
 ---
 
-## 📚 Mathematical Foundation
+## 📚 Dasar Matematis
 
-**Markov Property:** The future state depends only on the current state, not on the sequence of events that preceded it.
+**Sifat Markov:** State masa depan hanya bergantung pada state saat ini, tidak pada urutan kejadian yang mendahuluinya.
 
-**Transition Probability:**
+**Probabilitas Transisi:**
 ```
 P(Xₙ₊₁ = j | Xₙ = i) = pᵢⱼ
 ```
 
-**n-Step Transition:**
+**Transisi n-Langkah:**
 ```
-P^n = P × P × ... × P (n times)
+P^n = P × P × ... × P (n kali)
 ```
 
 ---
 
-## 👥 Contributors
+## 👥 Kontributor
 
 Kelompok 13 RA
 
 ---
 
-## 📄 License
+## 📄 Lisensi
 
-This project is part of academic coursework.
+Proyek ini merupakan bagian dari tugas akademik.
 
 ---
 
-## 📖 References
+## 📖 Referensi
 
-See `outdate/referensi/` folder for academic papers on:
-- Parking lot occupancy prediction
-- Markov Chain applications in traffic systems
-- Cooperative multiagent systems for parking
+Lihat folder `outdate/referensi/` untuk paper akademik tentang:
+- Prediksi okupansi tempat parkir
+- Aplikasi Rantai Markov dalam sistem lalu lintas
+- Sistem multiagen kooperatif untuk parkir
